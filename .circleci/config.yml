@@ -21,9 +21,6 @@ jobs:
     steps:
       - checkout
 
-      - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
-      - run: sudo docker-php-ext-install zip
-
       # Download and cache dependencies
 
       # composer cache
@@ -54,6 +51,8 @@ jobs:
           paths:
             - node_modules
             - ~/.yarn
+
+      - run: npm run build
 
       # prepare the database
       - run: touch storage/testing.sqlite
